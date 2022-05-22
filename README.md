@@ -1,6 +1,8 @@
+[![Ruby](https://github.com/rumspace/ipgeobase/actions/workflows/main.yml/badge.svg)](https://github.com/rumspace/ipgeobase/actions/workflows/main.yml)
+
 # Ipgeobase
 
-[![Ruby](https://github.com/rumspace/ipgeobase/actions/workflows/main.yml/badge.svg)](https://github.com/rumspace/ipgeobase/actions/workflows/main.yml)
+Service to fetch public metadata from IP-address
 
 ## Installation
 
