@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = "IPGeoBase is a simple gem to obtain data from IP address"
   spec.description = "IPGeoBase conatin a method called lookup('8.8.8.8') which fetch public data using http://ip-api.com/"
   spec.homepage = "https://github.com/rumspace/ipgeobase"
-  spec.required_ruby_version = ">= 3.1.1"
+  spec.required_ruby_version = ">= 2.6"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/rumspace/ipgeobase."

@@ -4,8 +4,7 @@ require_relative "test_helper"
 require_relative "../lib/ipgeobase"
 
 class TestIpgeobase < Minitest::Test
-  def setup
-    xml_data_us = "<query>
+  XML_US = "<query>
                   <country>United States</country>
                   <countryCode>US</countryCode>
                   <city>Ashburn</city>
@@ -14,6 +13,24 @@ class TestIpgeobase < Minitest::Test
                   <query>8.8.8.8</query>
                 </query>"
 
+  XML_RU = "<query>
+                <status>success</status>
+                <country>Russia</country>
+                <countryCode>RU</countryCode>
+                <region>SVE</region>
+                <regionName>Sverdlovsk Oblast</regionName>
+                <city>Yekaterinburg</city>
+                <zip>620000</zip>
+                <lat>56.8439</lat>
+                <lon>60.6524</lon>
+                <timezone>Asia/Yekaterinburg</timezone>
+                <isp>PJSC MegaFon</isp>
+                <org>OJSC MegaFon GPRS/UMTS Network</org>
+                <as>AS31224 PJSC MegaFon</as>
+                <query>83.169.216.199</query>
+              </query>"
+
+  def setup
     stub_request(:get, "http://[http//ip-api.com/xml/%5D:808.8.8.8")
       .with(
         headers: {
@@ -22,24 +39,7 @@ class TestIpgeobase < Minitest::Test
           "User-Agent" => "Ruby"
         }
       )
-      .to_return(status: 200, body: xml_data_us, headers: {})
-
-    xml_data_ru = "<query>
-                    <status>success</status>
-                    <country>Russia</country>
-                    <countryCode>RU</countryCode>
-                    <region>SVE</region>
-                    <regionName>Sverdlovsk Oblast</regionName>
-                    <city>Yekaterinburg</city>
-                    <zip>620000</zip>
-                    <lat>56.8439</lat>
-                    <lon>60.6524</lon>
-                    <timezone>Asia/Yekaterinburg</timezone>
-                    <isp>PJSC MegaFon</isp>
-                    <org>OJSC MegaFon GPRS/UMTS Network</org>
-                    <as>AS31224 PJSC MegaFon</as>
-                    <query>83.169.216.199</query>
-                  </query>"
+      .to_return(status: 200, body: XML_US, headers: {})
 
     stub_request(:get, "http://[http//ip-api.com/xml/%5D:8083.169.216.199")
       .with(
@@ -49,7 +49,7 @@ class TestIpgeobase < Minitest::Test
           "User-Agent" => "Ruby"
         }
       )
-      .to_return(status: 200, body: xml_data_ru, headers: {})
+      .to_return(status: 200, body: XML_RU, headers: {})
   end
 
   def test_that_it_has_a_version_number

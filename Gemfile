@@ -7,7 +7,7 @@ gemspec
 
 gem "rake"
 
-gem 'minitest-power_assert'
+gem "minitest-power_assert"
 
 gem "rubocop"
 
