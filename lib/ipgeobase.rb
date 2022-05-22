@@ -7,6 +7,7 @@ require "addressable/template"
 require "net/http"
 require "uri"
 
+# Service to fetch public metadata from IP-address
 module Ipgeobase
   class Error < StandardError; end
 

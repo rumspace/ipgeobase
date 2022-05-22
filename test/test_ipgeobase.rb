@@ -31,6 +31,11 @@ class TestIpgeobase < Minitest::Test
               </query>"
 
   def setup
+    stab_request_ru
+    stab_request_us
+  end
+
+  def stab_request_us
     stub_request(:get, "http://[http//ip-api.com/xml/%5D:808.8.8.8")
       .with(
         headers: {
@@ -40,7 +45,9 @@ class TestIpgeobase < Minitest::Test
         }
       )
       .to_return(status: 200, body: XML_US, headers: {})
+  end
 
+  def stab_request_ru
     stub_request(:get, "http://[http//ip-api.com/xml/%5D:8083.169.216.199")
       .with(
         headers: {
